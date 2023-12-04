@@ -10,7 +10,9 @@ local numbers = {
     ['nine'] = 9,
 };
 
+-- Replace words in a string with numbers
 local function replaceWordsWithNumbers(input)
+    -- Make a copy of the input, so we don't modify the original
     local result = input;
 
     local i = 0;
@@ -34,8 +36,7 @@ local function replaceWordsWithNumbers(input)
         end
 
         if number then
-            -- adds the number after the word, e.g. seven7
-            -- does not modify the original input, prevents inability to match like eightwo
+            -- Add the number after the word, e.g. seven7           
             result = string.sub(result, 1, j) .. number .. string.sub(result, j + 1);
             j = j + 1;
         end
@@ -44,6 +45,7 @@ local function replaceWordsWithNumbers(input)
     return result;
 end
 
+-- Grab the first number it finds in a string
 local function getFirstNumberInString(input)
     for i = 1, #input do
         local character = string.sub(input, i, i);
@@ -57,6 +59,7 @@ local function getFirstNumberInString(input)
     return 0;
 end
 
+-- Sum of the first and last number in each line of a file
 local function getSumOfEachLineInFile(filename)
     local result = 0;
 
@@ -70,4 +73,5 @@ local function getSumOfEachLineInFile(filename)
     return result;
 end
 
-print(getSumOfEachLineInFile("input.txt"));
+-- Main
+print(getSumOfEachLineInFile('input.txt')); -- Answer

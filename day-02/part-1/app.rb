@@ -7,7 +7,7 @@ def parse_line(line)
     round.split(',').each do |item|
       count, colour = item.split
 
-      # Only replace the colour if it is greator than the existing
+      # Only replace the colour if it is greater than the existing
       if count.to_i > game[colour]
         game[colour] = count.to_i
       end
@@ -17,6 +17,7 @@ def parse_line(line)
   game
 end
 
+# Check if a game is possible with the given cubes
 def is_possible(game, red = 12, green = 13, blue = 14)
   game['red'] <= red and game['green'] <= green and game['blue'] <= blue
 end
@@ -29,4 +30,4 @@ File.readlines('input.txt', chomp: true).each do |line|
     sum += game['id']
   end
 end
-puts sum # print the answer
+puts sum # Answer

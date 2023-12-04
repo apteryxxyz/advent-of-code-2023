@@ -7,6 +7,7 @@ def parse_line(line)
     round.split(',').each do |item|
       count, colour = item.split
 
+      # Only replace the colour if it is greater than the existing
       if count.to_i > game[colour]
         game[colour] = count.to_i
       end
@@ -14,7 +15,7 @@ def parse_line(line)
   end
 
   game['id'] = header.split[1].to_i
-  game['power'] = game['red'] * game['green'] * game['blue']
+  game['product'] = game['red'] * game['green'] * game['blue']
 
   game
 end
@@ -23,7 +24,7 @@ end
 sum = 0
 File.readlines('input.txt', chomp: true).each do |line|
   game = parse_line(line)
-  # part 2 just consisted of getting the product of all the cudes and summing, easy
-  sum += game['power']
+  # Part 2 just consisted of getting the product of all the cudes and summing, easy
+  sum += game['product']
 end
-puts sum
+puts sum # Answer

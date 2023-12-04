@@ -78,19 +78,21 @@ int main(int argc, char* argv[])
 
                 int number_length = std::to_string(full_number).length();
                 for (int i = 0; i < number_length; i++) {
+                    // Check if there is a symbol adjacent to the number
                     if (has_adjacent_symbol(symbols, rows, x + i, y)) {
                         sum += full_number;
+                        // Uses a loop and breaks so that we don't add the same number twice
                         break;
                     }
                 }
 
-                // skip ahead to the end of the number
+                // Skip ahead to the end of the number
                 x += number_length - 1;
             }
         }
     }
 
-    std::cout << sum << std::endl;
+    std::cout << sum << std::endl; // Answer
 
     return 0;
 }

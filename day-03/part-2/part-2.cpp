@@ -19,10 +19,10 @@ bool is_gear(char c) { return c == '*'; }
 // Found a number at x and y, get the full number by looking both ways
 int get_full_number(std::vector<std::string> rows, std::string as, int x, int y)
 {
-    // Check if we are at the start of the number
+    // Ensure we are start building the number from the start
     char previous = at(rows, x - 1, y);
-    if (as == "" && is_number(previous)) return get_full_number(rows, "", x - 1, y);
-    // Passes if we are at the start of the number
+    if (as == "" && is_number(previous)) return get_full_number(rows, as, x - 1, y);
+    // Only passes if we are at the start of the number
 
     // Start grabing the number by looking ahead
     if (as == "") as = at(rows, x, y);
@@ -32,6 +32,7 @@ int get_full_number(std::vector<std::string> rows, std::string as, int x, int y)
     return std::stoi(as);
 }
 
+// Get the product of the two numbers surrounding the gear at x and y
 int get_surrounding_numbers_product(std::vector<std::string> rows, int x, int y) {
 	std::set<int> numbers;
 	
@@ -76,7 +77,7 @@ int main(int argc, char* argv[])
         }
     }
 
-    std::cout << sum << std::endl;
+    std::cout << sum << std::endl; // Answer
 	
     return 0;
 }
